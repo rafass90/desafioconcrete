@@ -62,5 +62,5 @@ eclipse {
 }
 
 task stage {
-  dependsOn build
+  dependsOn bootRun
 }
