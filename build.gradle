@@ -6,18 +6,15 @@ buildscript {
 		mavenCentral()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
-		maven { url "https://plugins.gradle.org/m2/" }
     }
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
-		classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot' 
-apply plugin: 'org.sonarqube'
 
 jar {
 	baseName = 'desafio'
@@ -41,11 +38,11 @@ dependencies {
 	compile group: 'com.auth0', name: 'java-jwt', version: '2.1.0'
 	compile group: 'io.paradoxical', name: 'cassieq-core', version: '0.10'
 
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-security')
-    compile(group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.3.RELEASE')
-    compile(group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.8.RELEASE') {
-        exclude(module: 'jackson-mapper-asl') // We already have a more recent jackson via Spring Boot
-    }
+    	compile(group: 'org.springframework.boot', name: 'spring-boot-starter-security')
+    	compile(group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.3.RELEASE')
+    	compile(group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.0.8.RELEASE') {
+        	exclude(module: 'jackson-mapper-asl') // We already have a more recent jackson via Spring Boot
+    	}
 	
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 	testCompile 'org.assertj:assertj-core:3.5.1'
@@ -61,10 +58,4 @@ eclipse {
 
 task stage {
   dependsOn bootRun
-}
-
-sonarqube {
-    properties {
-        property "sonar.exclusions", "**/*Generated.java"
-    }
 }
