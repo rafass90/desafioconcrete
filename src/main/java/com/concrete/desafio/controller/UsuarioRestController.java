@@ -26,9 +26,9 @@ public class UsuarioRestController {
 	@Inject
 	UserService userService;
 
-	@RequestMapping("/")
+	@RequestMapping({"/", "/home"})
 	public String home() {
-        return "Hello World!";
+        return "<h1>DESAFIO CONCRETE</h1>";
     }
 	
 	@RequestMapping(value= "/register", method=RequestMethod.POST, headers="Accept=application/json", produces = "application/json; charset=UTF-8")
